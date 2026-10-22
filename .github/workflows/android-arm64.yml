@@ -27,9 +27,10 @@ jobs:
       - uses: oven-sh/setup-bun@v2
       - uses: dtolnay/rust-toolchain@stable
         with: { targets: aarch64-linux-android }
-      - uses: android-actions/setup-android@v3
       - name: Install NDK
-        run: sdkmanager "ndk;${{ env.NDK_VERSION }}"
+        run: |
+          yes | sdkmanager --licenses > /dev/null
+          sdkmanager "ndk;${{ env.NDK_VERSION }}"
       - uses: Swatinem/rust-cache@v2
         with: { workspaces: "src-tauri -> target" }
       - run: bun install --frozen-lockfile
