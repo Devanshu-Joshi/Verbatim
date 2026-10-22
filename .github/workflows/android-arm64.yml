@@ -93,7 +93,7 @@ jobs:
 
           bash ./gradlew :app:assembleUniversalDebug \
             -PtargetList=aarch64 \
-            -ParchList=aarch64 \
+            -ParchList=arm64 \
             -PabiList=arm64-v8a
       - name: Resolve APK path
         id: apk
